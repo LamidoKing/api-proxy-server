@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import { notFound, serverError } from './middleware';
+import proxy from './routes';
 
 const createApp = () => {
   const app = express();
@@ -11,6 +12,8 @@ const createApp = () => {
   app.use(cors({ credentials: true, origin: true }));
 
   app.use(helmet());
+
+  app.use('/api/v1', proxy);
 
   app.use(notFound);
 
