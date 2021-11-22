@@ -13,6 +13,8 @@ const createApp = () => {
 
   app.use(helmet());
 
+  app.set('trust proxy', 1);
+
   app.use('/api/v1', proxy);
 
   app.use(notFound);
